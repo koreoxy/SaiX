@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 body {
-	background: oklch(0.129 0.042 264.695);
-	color: #ffff;
+	background: oklch(0.141 0.005 285.823);
+	/* color: #ffff; */
+	color: #1bf9ab;
 }
