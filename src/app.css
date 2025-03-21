@@ -1,7 +1,18 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Cutive&display=swap');
 
 body {
+	font-family: 'Onest Variable', sans-serif;
 	background: oklch(0.141 0.005 285.823);
-	/* color: #ffff; */
-	color: #1bf9ab;
+	color: #ffff;
+}
+
+.pt-font {
+	font-family: 'PT Mono', monospace;
+}
+
+.cutive-font {
+	font-family: 'Cutive', serif;
+	font-weight: 400;
+	font-style: normal;
 }

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Scene from './Scene.svelte';
+	import IconX from '~icons/mdi/star-four-points';
+	import IconLine from '~icons/mdi/vector-line';
 </script>
 
 <section>
@@ -14,15 +16,28 @@
 			<div class="col-start-1 md:row-start-1">
 				<h1
 					class="mb-2 text-[clamp(3rem,20vmin,13rem)] leading-none font-extrabold tracking-tighter text-nowrap md:mb-8"
+					aria-label="Sai fullah"
 				>
-					Test
+					<span class="bg-gradient-to-r bg-clip-text font-bold text-[#1bf9ab]">Sai</span>
+					<span class=" text-[#1bf9ab]">
+						<IconX class="-rotate-45" />
+					</span>
+
+					<span
+						class="bg-gradient-to-r from-[#1bf9ab] via-red-500 to-yellow-500 bg-clip-text font-bold text-transparent"
+					>
+						Fullah
+					</span>
 				</h1>
 
-				<span
-					class="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-2xl font-bold tracking-[.2em] text-transparent uppercase opacity-0 md:text-4xl"
-				>
-					Tagline
-				</span>
+				<h2 class="flex flex-col" aria-label="Web Developer Focused on Frontend.">
+					<span class="flex flex-row items-center gap-2"
+						><IconLine class="text-2xl font-extralight" aria-hidden="true" />
+						<span class="cutive-font text-2xl md:text-4xl">Web Developer</span>
+					</span>
+
+					<span class="cutive-font text-2xl md:text-4xl">Focused on Frontend. </span>
+				</h2>
 			</div>
 		</div>
 	</div>
