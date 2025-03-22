@@ -8,7 +8,7 @@
 	{...$$restProps}
 	class={clsx(`px-4 py-10 md:px-6 md:py-14 lg:py-16`, $$props.class)}
 >
-	<div class="mx-auto w-full max-w-7xl">
+	<div class="mx-auto w-full max-w-7xl md:max-w-2xl">
 		<slot />
 	</div>
 </svelte:element>
