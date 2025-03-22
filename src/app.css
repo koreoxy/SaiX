@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Cutive&display=swap');
+@import 'tailwindcss';
 
 body {
 	font-family: 'Onest Variable', sans-serif;
