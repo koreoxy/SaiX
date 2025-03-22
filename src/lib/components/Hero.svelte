@@ -29,8 +29,8 @@
 		<span class="cutive-font text-2xl md:text-4xl">Focused on Frontend. </span>
 	</h2>
 
-	<div class="mt-8 flex flex-col gap-3 text-xl font-light text-zinc-400">
-		<p class="">
+	<div class="mt-8 flex flex-col gap-3 text-xl font-light text-zinc-300">
+		<p>
 			I enjoy designing and developing interactive and dynamic web applications. For me, web
 			development is a platform to express creativity and create captivating works of art.
 		</p>
