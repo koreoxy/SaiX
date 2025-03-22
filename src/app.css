@@ -5,6 +5,7 @@ body {
 	font-family: 'Onest Variable', sans-serif;
 	background: oklch(0.141 0.005 285.823);
 	color: #ffff;
+	overflow-x: hidden;
 }
 
 .pt-font {
