@@ -3,6 +3,7 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Scene from '$lib/components/Model/Scene.svelte';
+	import Project from '$lib/components/Project.svelte';
 	import TechList from '$lib/components/TechList.svelte';
 </script>
 
@@ -12,6 +13,7 @@
 			<Hero />
 			<Contact />
 			<TechList />
+			<Project />
 		</div>
 	</Bounded>
 
