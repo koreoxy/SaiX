@@ -1,5 +1,10 @@
 import IconBrowse from '~icons/tabler/world-www';
 import IconPhone from '~icons/majesticons/iphone-x-apps-line';
+import IconGithub from '~icons/mdi/github';
+import IconInstagram from '~icons/mdi/instagram';
+import IconYoutube from '~icons/mdi/youtube';
+import IconWakatime from '~icons/simple-icons/wakatime';
+import IconLinkin from '~icons/mdi/linkedin';
 
 export type Project = {
 	id: number;
@@ -9,6 +14,13 @@ export type Project = {
 	link: string;
 	status?: string;
 	tech: { name: string }[];
+	icon?: typeof IconBrowse;
+};
+
+export type Social = {
+	id: number;
+	name: string;
+	link: string;
 	icon?: typeof IconBrowse;
 };
 
@@ -78,4 +90,37 @@ const projects: Project[] = [
 	}
 ];
 
-export default projects;
+const socials: Social[] = [
+	{
+		id: 1,
+		name: 'Github',
+		link: 'https://github.com/koreoxy',
+		icon: IconGithub
+	},
+	{
+		id: 2,
+		name: 'Instagram',
+		link: 'https://www.instagram.com/ifulufi',
+		icon: IconInstagram
+	},
+	{
+		id: 3,
+		name: 'Youtube',
+		link: 'https://www.youtube.com/@1sh1sh',
+		icon: IconYoutube
+	},
+	{
+		id: 4,
+		name: 'Wakatime',
+		link: 'https://wakatime.com/@koreoxy',
+		icon: IconWakatime
+	},
+	{
+		id: 5,
+		name: 'Linkedin',
+		link: 'https://www.linkedin.com/in/saifullah-iful/',
+		icon: IconLinkin
+	}
+];
+
+export { projects, socials };

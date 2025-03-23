@@ -4,6 +4,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Scene from '$lib/components/Model/Scene.svelte';
 	import Project from '$lib/components/Project.svelte';
+	import Social from '$lib/components/Social.svelte';
 	import TechList from '$lib/components/TechList.svelte';
 </script>
 
@@ -12,6 +13,7 @@
 		<div class="flex-1 p-0 md:p-6">
 			<Hero />
 			<Contact />
+			<Social />
 			<TechList />
 			<Project />
 		</div>

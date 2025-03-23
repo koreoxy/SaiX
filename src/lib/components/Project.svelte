@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IconX from '~icons/mdi/star-four-points';
-	import projects from '../data';
-	import type { Project } from '../data';
+	import { projects } from '$lib/data';
+	import type { Project } from '$lib/data';
 	import { onMount } from 'svelte';
 	const projectList: Project[] = projects;
 
