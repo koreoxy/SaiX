@@ -1,6 +1,7 @@
 <script>
 	import Bounded from '$lib/components/Bounded.svelte';
 	import Contact from '$lib/components/Contact.svelte';
+	import Github from '$lib/components/Github.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Scene from '$lib/components/Model/Scene.svelte';
 	import Project from '$lib/components/Project.svelte';
@@ -14,6 +15,7 @@
 			<Hero />
 			<Contact />
 			<Social />
+			<Github />
 			<TechList />
 			<Project />
 		</div>
