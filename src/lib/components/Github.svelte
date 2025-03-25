@@ -235,11 +235,11 @@
 		background: #555;
 	}
 
-	@media (max-width: 768px) {
+	/* @media (max-width: 768px) {
 		.grid-container {
 			overflow-x: hidden;
 		}
-	}
+	} */
 
 	.months {
 		display: grid;

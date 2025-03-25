@@ -16,13 +16,13 @@
 		</h1>
 	</span>
 
-	<div class="mt-2 flex flex-row gap-2">
+	<div class="mt-2 grid grid-cols-2 gap-2 sm:flex sm:flex-row">
 		{#each socialList as { name, link, icon }}
 			<a
 				href={link}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="group relative inline-block cursor-pointer rounded-md px-2 py-1 font-semibold text-orange-400 transition-all duration-500 ease-out hover:scale-105 hover:text-white hover:italic"
+				class="group relative cursor-pointer rounded-md px-2 py-1 font-semibold text-orange-400 transition-all duration-500 ease-out hover:scale-105 hover:text-white hover:italic"
 				aria-label={`Visit ${name}`}
 			>
 				<span class="relative">
