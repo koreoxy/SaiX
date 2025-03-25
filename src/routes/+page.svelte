@@ -22,7 +22,7 @@
 	</Bounded>
 
 	<div
-		class="-z-10 ml-16 h-0 w-full flex-shrink-0 sm:ml-0 sm:block sm:h-64 md:z-0 md:h-auto md:w-1/3 lg:w-1/2"
+		class="-z-10 h-0 w-full flex-shrink-0 pl-[120px] sm:block sm:h-64 sm:pl-0 md:z-0 md:h-auto md:w-1/3 lg:w-1/2"
 	>
 		<div class="mt-10 md:sticky md:top-0 md:mt-0 md:h-screen">
 			<Scene />
