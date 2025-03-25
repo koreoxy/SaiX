@@ -7,7 +7,12 @@
 	import Project from '$lib/components/Project.svelte';
 	import Social from '$lib/components/Social.svelte';
 	import TechList from '$lib/components/TechList.svelte';
+	import * as config from '$lib/config';
 </script>
+
+<svelte:head>
+	<title>{config.title}</title>
+</svelte:head>
 
 <section class="relative flex min-h-screen flex-col-reverse md:flex-row">
 	<Bounded tag="div">
