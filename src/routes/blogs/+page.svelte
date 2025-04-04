@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>{config.title}</title>
+	<title>{config.title} | All Posts</title>
 </svelte:head>
 
 <!-- <pre>

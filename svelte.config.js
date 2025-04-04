@@ -2,8 +2,6 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import preprocess from 'svelte-preprocess';
 import { escapeSvelte, mdsvex } from 'mdsvex';
-// import remarkToc from 'remark-toc';
-// import rehypeSlug from 'rehype-slug';
 import { createHighlighter } from 'shiki';
 
 import dotenv from 'dotenv';
@@ -24,8 +22,6 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`;
 		}
 	}
-	// remarkPlugins: [[remarkToc, { tight: true }]],
-	// rehypePlugins: [rehypeSlug]
 };
 
 /** @type {import('@sveltejs/kit').Config} */
