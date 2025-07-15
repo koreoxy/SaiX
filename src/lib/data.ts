@@ -27,17 +27,27 @@ export type Social = {
 const projects: Project[] = [
 	{
 		id: 1,
+		title: 'Totorobit',
+		description:
+			'A simple and intuitive habit tracking app built with React Native and Expo. Track your daily habits and maintain streaks to build lasting positive behaviors.',
+		subTitle: 'Mobile App',
+		icon: IconPhone,
+		link: 'https://github.com/Koreoxy1SH/totorobit',
+		status: 'Recent',
+		tech: [{ name: 'React Native' }, { name: 'Expo' }]
+	},
+	{
+		id: 2,
 		title: 'SaiX',
 		description:
 			'My 3D portfolio website is built using Svelte, Gsap and Three.js. You can check the code on my GitHub.',
 		subTitle: 'Website',
 		icon: IconBrowse,
 		link: 'https://github.com/koreoxy/SaiX',
-		status: 'Recent',
 		tech: [{ name: 'Svelte' }, { name: 'TailwindCSS' }, { name: 'Three.js' }, { name: 'gsap' }]
 	},
 	{
-		id: 2,
+		id: 3,
 		title: 'NutrixSense',
 		description:
 			'The NutrixSense application is a web-based application that aims to calculate daily calories and nutrition in Indonesia using object detection from the YOLOv8 model. This application also allows users to calculate food calories and nutrients manually.',
@@ -51,21 +61,6 @@ const projects: Project[] = [
 			{ name: 'Typescript' },
 			{ name: 'Prisma' },
 			{ name: 'Supabase' }
-		]
-	},
-	{
-		id: 3,
-		title: 'Tootoro',
-		description:
-			'Tootoro is a simple habit-tracking app built with React Native, Expo, Zustand, and react-native-mmkv for local storage to save user data on the device.',
-		subTitle: 'Mobile App',
-		icon: IconPhone,
-		link: 'https://github.com/koreoxy/tootoro',
-		tech: [
-			{ name: 'React Native' },
-			{ name: 'Expo' },
-			{ name: 'Zustand' },
-			{ name: 'react-native-mmkv' }
 		]
 	},
 	{
