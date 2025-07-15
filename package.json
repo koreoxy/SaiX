@@ -48,6 +48,7 @@
 	"dependencies": {
 		"@fontsource-variable/onest": "^5.2.6",
 		"@fontsource/pt-mono": "^5.2.5",
+		"@supabase/supabase-js": "^2.51.0",
 		"dotenv": "^16.4.7",
 		"gsap": "^3.12.7"
 	}
