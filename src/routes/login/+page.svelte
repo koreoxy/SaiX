@@ -35,9 +35,9 @@
 	<title>Login | SaiX</title>
 </svelte:head>
 
-<section class="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-16">
+<section class="flex min-h-screen items-center justify-center px-4 py-16">
 	<div
-		class="flex w-full max-w-md flex-col items-center gap-6 rounded-2xl bg-neutral-900 p-10 shadow-xl"
+		class="flex w-full max-w-md flex-col items-center gap-6 rounded-2xl border-neutral-800 bg-gradient-to-b from-neutral-900 to-neutral-950 p-10 shadow-xl"
 	>
 		<h1 class="mb-2 text-3xl font-bold text-white">Sign in</h1>
 		<button

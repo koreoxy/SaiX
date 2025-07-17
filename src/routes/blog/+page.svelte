@@ -61,7 +61,7 @@
 	<meta name="description" content="Insights, tutorials, and updates from the SaiX team." />
 </svelte:head>
 
-<section class="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
+<section class="mt-24 min-h-screen px-4 py-20 sm:mt-20 sm:px-6 lg:px-8">
 	<div class="mx-auto mb-12 max-w-2xl text-center">
 		<div class="relative mb-16 flex min-h-[340px] flex-col items-center justify-center">
 			<div class="absolute inset-0 -z-10 flex items-center justify-center">
