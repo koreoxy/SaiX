@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import { user } from '$lib/auth'; // Ensure session is always initialized
 	let { children } = $props();
 </script>
 

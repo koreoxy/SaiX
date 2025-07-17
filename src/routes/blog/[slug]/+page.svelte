@@ -1,64 +1,77 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { supabase } from '$lib';
 
-  // Sample blog data (in real app, fetch by slug)
-  const posts = [
-    {
-      title: 'Introducing SaiX Blog',
-      date: '2024-06-01',
-      content: `Welcome to the SaiX blog! Stay tuned for updates, tutorials, and more.\n\nThis is a sample blog post.`,
-      image: 'https://source.unsplash.com/random/1200x500?minimal,blog',
-      slug: 'introducing-saix-blog'
-    },
-    {
-      title: 'Building with Svelte and TailwindCSS',
-      date: '2024-06-02',
-      content: `A quick guide on how we use Svelte and TailwindCSS to build beautiful, modern UIs.\n\nThis is a sample blog post.`,
-      image: 'https://source.unsplash.com/random/1200x500?code,svelte',
-      slug: 'building-with-svelte-tailwindcss'
-    },
-    {
-      title: 'Minimalism in Web Design',
-      date: '2024-06-03',
-      content: `Why less is more: embracing minimalism for better user experiences.\n\nThis is a sample blog post.`,
-      image: 'https://source.unsplash.com/random/1200x500?minimal,design',
-      slug: 'minimalism-in-web-design'
-    }
-  ];
+	let post: any = null;
+	let loading = true;
+	let error = '';
+	$: slug = $page.params.slug;
 
-  let post = null;
-  $: slug = $page.params.slug;
-  $: post = posts.find(p => p.slug === slug);
+	async function fetchPost() {
+		loading = true;
+		error = '';
+		const { data, error: fetchError } = await supabase
+			.from('blog_posts')
+			.select('*')
+			.eq('slug', slug)
+			.single();
+		if (fetchError) {
+			error = fetchError.message;
+			post = null;
+		} else {
+			post = data;
+		}
+		loading = false;
+	}
 
-  onMount(() => {
-    if (!post) goto('/blog');
-  });
+	onMount(fetchPost);
 </script>
 
 <svelte:head>
-  <title>{post ? post.title + ' | SaiX Blog' : 'Blog | SaiX'}</title>
-  <meta name="description" content={post ? post.content.slice(0, 120) : 'SaiX Blog post'} />
+	<title>{post ? post.title + ' | SaiX Blog' : 'Blog | SaiX'}</title>
+	<meta name="description" content={post ? post.content?.slice(0, 120) : 'SaiX Blog post'} />
 </svelte:head>
 
-{#if post}
-  <section class="min-h-screen py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-    <div class="w-full max-w-3xl mx-auto">
-      <a href="/blog" class="text-blue-400 hover:underline text-sm mb-8 inline-block">← Back to Blog</a>
-      <img src={post.image} alt={post.title} class="w-full h-64 object-cover rounded-2xl mb-8 shadow-lg" />
-      <h1 class="text-4xl font-extrabold text-white mb-4 leading-tight">{post.title}</h1>
-      <p class="text-neutral-400 text-sm mb-8">{post.date}</p>
-      <div class="prose prose-invert prose-lg text-neutral-200 max-w-none mb-12 whitespace-pre-line">
-        {post.content}
-      </div>
-    </div>
-  </section>
+{#if loading}
+	<section class="flex min-h-screen items-center justify-center bg-neutral-950">
+		<span class="text-neutral-400">Loading...</span>
+	</section>
+{:else if error}
+	<section class="flex min-h-screen items-center justify-center bg-neutral-950">
+		<div class="text-center">
+			<h2 class="mb-4 text-2xl text-red-400">{error}</h2>
+			<a href="/blog" class="text-blue-400 hover:underline">Back to Blog</a>
+		</div>
+	</section>
+{:else if post}
+	<section class="flex min-h-screen flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
+		<div class="mx-auto w-full max-w-3xl">
+			<a href="/blog" class="mb-8 inline-block text-sm text-blue-400 hover:underline"
+				>← Back to Blog</a
+			>
+			{#if post.image}
+				<img
+					src={post.image}
+					alt={post.title}
+					class="mb-8 h-64 w-full rounded-2xl object-cover shadow-lg"
+				/>
+			{/if}
+			<h1 class="mb-4 text-4xl leading-tight font-extrabold text-white">{post.title}</h1>
+			<p class="mb-8 text-sm text-neutral-400">{post.created_at?.slice(0, 10)}</p>
+			<div
+				class="prose prose-invert prose-lg mb-12 max-w-none whitespace-pre-line text-neutral-200"
+			>
+				{post.content}
+			</div>
+		</div>
+	</section>
 {:else}
-  <section class="min-h-screen flex items-center justify-center bg-neutral-950">
-    <div class="text-center">
-      <h2 class="text-2xl text-white mb-4">Post not found</h2>
-      <a href="/blog" class="text-blue-400 hover:underline">Back to Blog</a>
-    </div>
-  </section>
-{/if} 
+	<section class="flex min-h-screen items-center justify-center bg-neutral-950">
+		<div class="text-center">
+			<h2 class="mb-4 text-2xl text-white">Post not found</h2>
+			<a href="/blog" class="text-blue-400 hover:underline">Back to Blog</a>
+		</div>
+	</section>
+{/if}
