@@ -63,10 +63,50 @@
 
 <section class="min-h-screen px-4 py-20 sm:px-6 lg:px-8">
 	<div class="mx-auto mb-12 max-w-2xl text-center">
-		<h1 class="mb-4 text-5xl font-extrabold tracking-tight text-white">Blog</h1>
-		<p class="mb-6 text-xl font-light text-neutral-400">
-			Insights, tutorials, and updates from the SaiX team.
-		</p>
+		<div class="relative mb-16 flex min-h-[340px] flex-col items-center justify-center">
+			<div class="absolute inset-0 -z-10 flex items-center justify-center">
+				<div
+					class="h-72 w-72 animate-pulse rounded-full bg-gradient-to-tr from-green-400/20 via-blue-400/10 to-transparent blur-3xl"
+				></div>
+			</div>
+			<div class="relative mx-auto h-[260px] w-full max-w-md">
+				<!-- Top box -->
+				<div
+					class="card-hero-box dark-glow absolute top-2 left-1/2 z-10 flex h-24 w-32 -translate-x-1/2 items-center justify-center rounded-xl border-2 border-green-400/40 bg-white/10 text-2xl font-extrabold text-green-400 shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-105 hover:shadow-2xl md:text-3xl"
+				>
+					Vibe.
+				</div>
+				<!-- Bottom left box -->
+				<div
+					class="card-hero-box dark-glow absolute bottom-6 left-6 z-10 flex h-24 w-32 items-center justify-center rounded-xl border-2 border-blue-400/40 bg-white/10 text-2xl font-extrabold text-blue-400 shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-105 hover:shadow-2xl md:text-3xl"
+				>
+					Code.
+				</div>
+				<!-- Bottom right box -->
+				<div
+					class="card-hero-box dark-glow absolute right-6 bottom-6 z-10 flex h-24 w-32 items-center justify-center rounded-xl border-2 border-purple-400/40 bg-white/10 text-2xl font-extrabold text-purple-400 shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-105 hover:shadow-2xl md:text-3xl"
+				>
+					Create.
+				</div>
+				<!-- Bottom center box -->
+				<div
+					class="card-hero-box dark-glow absolute bottom-0 left-1/2 z-10 flex h-24 w-32 -translate-x-1/2 items-center justify-center rounded-xl border-2 border-pink-400/40 bg-white/10 text-2xl font-extrabold text-pink-400 shadow-lg backdrop-blur-md transition-transform duration-300 hover:scale-105 hover:shadow-2xl md:text-3xl"
+				>
+					Share.
+				</div>
+				<!-- Center text -->
+				<div
+					class="absolute top-1/2 left-1/2 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-white/10 bg-zinc-950/90 text-2xl font-extrabold text-white shadow-lg md:text-3xl"
+				>
+					SaiX
+				</div>
+			</div>
+			<p
+				class="mt-10 max-w-2xl text-center text-xl font-bold text-zinc-100/90 drop-shadow-lg md:text-2xl"
+			>
+				Insights, tutorials, and tools for modern developers and tech enthusiasts.
+			</p>
+		</div>
 		{#if loginError}
 			<div class="mb-4 text-lg font-semibold text-red-400">{loginError}</div>
 		{/if}
@@ -155,3 +195,57 @@
 		</div>
 	{/if}
 </section>
+
+<style>
+	@keyframes fade-in-up {
+		0% {
+			opacity: 0;
+			transform: translateY(40px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	.animate-fade-in-up {
+		animation: fade-in-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+	}
+	.card-hero-box {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: inherit;
+		font-weight: 700;
+		box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.1);
+		transition:
+			transform 0.3s,
+			box-shadow 0.3s;
+		backdrop-filter: blur(8px);
+	}
+	.card-hero-box:hover {
+		transform: scale(1.07);
+		box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+	}
+	/* Dark ambient glow for all cards */
+	.dark-glow {
+		box-shadow:
+			0 0 32px 0 #18181bcc,
+			0 0 8px 0 #18181b99;
+	}
+	.dark-glow:hover {
+		animation: dark-glow-pulse 1.2s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	@keyframes dark-glow-pulse {
+		0% {
+			box-shadow:
+				0 0 32px 0 #18181bcc,
+				0 0 8px 0 #18181b99;
+		}
+		100% {
+			box-shadow:
+				0 0 64px 8px #18181bcc,
+				0 0 24px 8px #18181b99;
+		}
+	}
+</style>
