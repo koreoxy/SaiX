@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { supabase } from '$lib';
 	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { user } from '$lib/auth';
 	import { marked } from 'marked';
 	// @ts-ignore
 	import hljs from 'highlight.js';
 	import 'highlight.js/lib/common';
 	import 'highlight.js/styles/github-dark.css';
+	import GoUpButton from '$lib/components/GoUpButton.svelte';
 
 	(marked as any).setOptions({
 		gfm: true,
@@ -35,6 +36,7 @@
 	let error = '';
 	let deleting = '';
 	let loginError = '';
+	let showGoUp = false;
 
 	$: if ($user && $user.email !== ALLOWED_EMAIL) {
 		loginError = `Only ${ALLOWED_EMAIL} is allowed to login.`;
@@ -77,6 +79,15 @@
 	}
 
 	onMount(fetchPosts);
+
+	onMount(() => {
+		const onScroll = () => {
+			showGoUp = window.scrollY > 200;
+		};
+		window.addEventListener('scroll', onScroll);
+		onScroll();
+		onDestroy(() => window.removeEventListener('scroll', onScroll));
+	});
 </script>
 
 <svelte:head>
@@ -208,6 +219,7 @@
 			{/each}
 		</div>
 	{/if}
+	<GoUpButton />
 </section>
 
 <style>

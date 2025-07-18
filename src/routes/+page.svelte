@@ -7,6 +7,7 @@
 	import Project from '$lib/components/Project.svelte';
 	import Social from '$lib/components/Social.svelte';
 	import TechList from '$lib/components/TechList.svelte';
+	import GoUpButton from '$lib/components/GoUpButton.svelte';
 	import * as config from '$lib/config';
 </script>
 
@@ -33,4 +34,5 @@
 			<Scene />
 		</div>
 	</div>
+	<GoUpButton />
 </section>

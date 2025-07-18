@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import { user } from '$lib/auth'; // Ensure session is always initialized
+	import { user } from '$lib/auth';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { page } from '$app/stores';
 	let navItems = { '': 'x.', blog: 'Blog' };

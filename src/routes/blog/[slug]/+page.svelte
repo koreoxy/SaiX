@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib';
 	import { marked } from 'marked';
@@ -8,6 +8,7 @@
 	import hljs from 'highlight.js';
 	import 'highlight.js/lib/common';
 	import 'highlight.js/styles/github-dark.css';
+	import GoUpButton from '$lib/components/GoUpButton.svelte';
 
 	(marked as any).setOptions({
 		gfm: true,
@@ -24,6 +25,7 @@
 	let loading = true;
 	let error = '';
 	let htmlContent = '';
+	let showGoUp = false;
 	$: slug = $page.params.slug;
 
 	async function fetchPost() {
@@ -43,6 +45,15 @@
 		}
 		loading = false;
 	}
+
+	onMount(() => {
+		const onScroll = () => {
+			showGoUp = window.scrollY > 200;
+		};
+		window.addEventListener('scroll', onScroll);
+		onScroll();
+		onDestroy(() => window.removeEventListener('scroll', onScroll));
+	});
 
 	onMount(fetchPost);
 </script>
@@ -97,3 +108,5 @@
 		</div>
 	</section>
 {/if}
+
+<GoUpButton />
