@@ -3,7 +3,7 @@
 	import { user } from '$lib/auth'; // Ensure session is always initialized
 	import Navbar from '$lib/components/Navbar.svelte';
 	import { page } from '$app/stores';
-	let navItems = { '': 'Home', blog: 'Blog' };
+	let navItems = { '': '/', blog: 'Blog' };
 </script>
 
 <Navbar
