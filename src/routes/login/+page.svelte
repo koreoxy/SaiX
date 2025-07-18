@@ -3,6 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { user } from '$lib/auth';
 	import { onMount } from 'svelte';
+	import { SUPABASE_URL } from '$lib/config';
 	let loading = false;
 	let error = '';
 	const ALLOWED_EMAIL = 'rayssankn@gmail.com';
@@ -16,12 +17,16 @@
 		}
 	}
 
+	// Always redirect to /blog after login
+	const redirectUrl =
+		(import.meta.env.PROD ? 'https://saix-topaz.vercel.app' : SUPABASE_URL) + '/blog';
+
 	async function signInWithGitHub() {
 		loading = true;
 		error = '';
 		const { error: signInError } = await supabase.auth.signInWithOAuth({
 			provider: 'github',
-			options: { redirectTo: window.location.origin + '/blog' }
+			options: { redirectTo: redirectUrl }
 		});
 		if (signInError) {
 			error = signInError.message;
