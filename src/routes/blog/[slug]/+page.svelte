@@ -46,24 +46,30 @@
 		</div>
 	</section>
 {:else if post}
-	<section class="flex min-h-screen flex-col items-center px-4 py-16 sm:px-6 lg:px-8">
+	<section
+		class="mt-24 flex min-h-screen flex-col items-center px-4 py-16 sm:mt-20 sm:px-6 lg:px-8"
+	>
 		<div class="mx-auto w-full max-w-3xl">
-			<a href="/blog" class="mb-8 inline-block text-sm text-blue-400 hover:underline"
-				>← Back to Blog</a
-			>
-			{#if post.image}
-				<img
-					src={post.image}
-					alt={post.title}
-					class="mb-8 h-64 w-full rounded-2xl object-cover shadow-lg"
-				/>
-			{/if}
-			<h1 class="mb-4 text-4xl leading-tight font-extrabold text-white">{post.title}</h1>
-			<p class="mb-8 text-sm text-neutral-400">{post.created_at?.slice(0, 10)}</p>
 			<div
-				class="prose prose-invert prose-lg mb-12 max-w-none whitespace-pre-line text-neutral-200"
+				class="rounded-3xl border-neutral-800 bg-gradient-to-b from-neutral-900 to-neutral-950 p-5"
 			>
-				{post.content}
+				<a href="/blog" class="mb-8 inline-block text-sm text-blue-400 hover:underline"
+					>← Back to Blog</a
+				>
+				{#if post.image}
+					<img
+						src={post.image}
+						alt={post.title}
+						class="mb-8 h-64 w-full rounded-2xl object-cover shadow-lg"
+					/>
+				{/if}
+				<h1 class="mb-4 text-4xl leading-tight font-extrabold text-white">{post.title}</h1>
+				<p class="mb-8 text-sm text-neutral-400">{post.created_at?.slice(0, 10)}</p>
+				<div
+					class="prose prose-invert prose-lg mb-12 max-w-none whitespace-pre-line text-neutral-200"
+				>
+					{post.content}
+				</div>
 			</div>
 		</div>
 	</section>

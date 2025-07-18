@@ -69,7 +69,7 @@
 	<title>Edit Blog Post | SaiX</title>
 </svelte:head>
 
-<section class="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-16">
+<section class="mt-24 flex min-h-screen items-center justify-center px-4 py-16 sm:mt-20">
 	{#if loading}
 		<div class="text-neutral-400">Loading...</div>
 	{:else if $user && isOwner}
