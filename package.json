@@ -28,6 +28,7 @@
 		"@tailwindcss/vite": "^4.1.2",
 		"@threlte/core": "^8.0.1",
 		"@threlte/extras": "^9.1.0",
+		"@types/highlight.js": "^9.12.4",
 		"eslint": "^9.18.0",
 		"eslint-config-prettier": "^10.0.1",
 		"eslint-plugin-svelte": "^3.0.0",
@@ -48,7 +49,10 @@
 	"dependencies": {
 		"@fontsource-variable/onest": "^5.2.6",
 		"@fontsource/pt-mono": "^5.2.5",
+		"@supabase/supabase-js": "^2.51.0",
 		"dotenv": "^16.4.7",
-		"gsap": "^3.12.7"
+		"gsap": "^3.12.7",
+		"highlight.js": "^11.11.1",
+		"marked": "^16.1.0"
 	}
 }

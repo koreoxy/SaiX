@@ -1,7 +1,16 @@
 <script>
 	import '../app.css';
-	let { children } = $props();
+	import { user } from '$lib/auth';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import { page } from '$app/stores';
+	let navItems = { '': 'x.', blog: 'Blog' };
 </script>
+
+<Navbar
+	{navItems}
+	currentPage={$page.url.pathname.replace(/^\//, '')}
+	isLoggedIn={Boolean($user)}
+/>
 
 <div
 	class="flex min-h-screen w-screen flex-col bg-[linear-gradient(to_right,rgba(128,128,128,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.2)_1px,transparent_1px)] bg-[size:40px_40px]"
@@ -11,6 +20,6 @@
 	></div>
 
 	<div class="w-full flex-1">
-		{@render children()}
+		<slot />
 	</div>
 </div>

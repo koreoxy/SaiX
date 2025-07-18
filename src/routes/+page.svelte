@@ -7,6 +7,7 @@
 	import Project from '$lib/components/Project.svelte';
 	import Social from '$lib/components/Social.svelte';
 	import TechList from '$lib/components/TechList.svelte';
+	import GoUpButton from '$lib/components/GoUpButton.svelte';
 	import * as config from '$lib/config';
 </script>
 
@@ -14,7 +15,7 @@
 	<title>{config.title}</title>
 </svelte:head>
 
-<section class="relative flex min-h-screen flex-col-reverse md:flex-row">
+<section class="relative mt-24 flex min-h-screen flex-col-reverse sm:mt-20 md:flex-row">
 	<Bounded tag="div">
 		<div class="flex-1 p-0 md:p-6">
 			<Hero />
@@ -33,4 +34,5 @@
 			<Scene />
 		</div>
 	</div>
+	<GoUpButton />
 </section>
