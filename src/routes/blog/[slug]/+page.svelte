@@ -3,10 +3,27 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { supabase } from '$lib';
+	import { marked } from 'marked';
+	// @ts-ignore
+	import hljs from 'highlight.js';
+	import 'highlight.js/lib/common';
+	import 'highlight.js/styles/github-dark.css';
+
+	(marked as any).setOptions({
+		gfm: true,
+		breaks: true,
+		highlight: (code: string, lang: string) => {
+			if (lang && hljs.getLanguage(lang)) {
+				return hljs.highlight(code, { language: lang }).value;
+			}
+			return hljs.highlightAuto(code).value;
+		}
+	});
 
 	let post: any = null;
 	let loading = true;
 	let error = '';
+	let htmlContent = '';
 	$: slug = $page.params.slug;
 
 	async function fetchPost() {
@@ -22,6 +39,7 @@
 			post = null;
 		} else {
 			post = data;
+			htmlContent = post?.content ? (marked.parse(post.content) as string) : '';
 		}
 		loading = false;
 	}
@@ -65,10 +83,8 @@
 				{/if}
 				<h1 class="mb-4 text-4xl leading-tight font-extrabold text-white">{post.title}</h1>
 				<p class="mb-8 text-sm text-neutral-400">{post.created_at?.slice(0, 10)}</p>
-				<div
-					class="prose prose-invert prose-lg mb-12 max-w-none whitespace-pre-line text-neutral-200"
-				>
-					{post.content}
+				<div class="markdown-body mb-12 max-w-none">
+					{@html htmlContent}
 				</div>
 			</div>
 		</div>

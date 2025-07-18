@@ -3,6 +3,29 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/auth';
+	import { marked } from 'marked';
+	// @ts-ignore
+	import hljs from 'highlight.js';
+	import 'highlight.js/lib/common';
+	import 'highlight.js/styles/github-dark.css';
+
+	(marked as any).setOptions({
+		gfm: true,
+		breaks: true,
+		highlight: (code: string, lang: string) => {
+			if (lang && hljs.getLanguage(lang)) {
+				return hljs.highlight(code, { language: lang }).value;
+			}
+			return hljs.highlightAuto(code).value;
+		}
+	});
+
+	function getPreviewMarkdown(md: string): string {
+		// Get first paragraph or first 200 chars
+		const firstPara = md.split(/\n\s*\n/)[0];
+		const preview = firstPara.length > 200 ? firstPara.slice(0, 200) + '...' : firstPara;
+		return marked.parse(preview) as string;
+	}
 
 	// Set your allowed GitHub email here
 	const ALLOWED_EMAIL = 'rayssankn@gmail.com';
@@ -128,12 +151,6 @@
 			{:else}
 				<div class="mb-2 text-sm text-red-400">You are not allowed to manage blog posts.</div>
 			{/if}
-		{:else}
-			<a
-				href="/login"
-				class="mb-2 inline-block rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white transition-colors hover:bg-blue-700"
-				>Login with GitHub</a
-			>
 		{/if}
 	</div>
 	{#if loading}
@@ -149,7 +166,7 @@
 			<span class="text-neutral-400">No blog posts found.</span>
 		</div>
 	{:else}
-		<div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-3">
+		<div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
 			{#each posts as post}
 				<div
 					class="group relative block overflow-hidden rounded-3xl border border-neutral-800 bg-gradient-to-b from-neutral-900 to-neutral-950 shadow-xl transition-shadow duration-300 hover:border-blue-700 hover:shadow-2xl"
@@ -158,7 +175,7 @@
 						<img
 							src={post.image}
 							alt={post.title}
-							class="h-48 w-full object-cover opacity-90 transition-transform duration-300 group-hover:scale-105 group-hover:opacity-100"
+							class="h-32 w-full object-cover opacity-90 transition-transform duration-300 group-hover:scale-105 group-hover:opacity-100"
 						/>
 						<div class="flex flex-col gap-3 p-7">
 							<h2
@@ -168,9 +185,6 @@
 							</h2>
 							<p class="mb-2 text-xs tracking-wide text-neutral-500 uppercase">
 								{post.created_at?.slice(0, 10)}
-							</p>
-							<p class="mb-4 line-clamp-3 font-light text-neutral-300">
-								{post.content?.slice(0, 120)}...
 							</p>
 						</div>
 					</a>

@@ -77,10 +77,13 @@
 				/>
 			</div>
 			<div class="flex flex-col gap-2">
-				<label class="text-sm font-medium text-neutral-300">Content</label>
+				<label class="text-sm font-medium text-neutral-300"
+					>Content <span class="ml-1 text-xs text-yellow-400">(Markdown supported)</span></label
+				>
 				<textarea
-					class="min-h-[120px] rounded-lg bg-neutral-800 px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+					class="min-h-[200px] rounded-lg bg-neutral-800 px-4 py-2 font-mono text-base text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
 					bind:value={content}
+					placeholder="Write your blog post in Markdown..."
 					required
 				/>
 			</div>
