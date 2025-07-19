@@ -2,8 +2,8 @@
 	import { supabase } from '$lib';
 	import { goto } from '$app/navigation';
 	import { user } from '$lib/auth';
-	import { onMount } from 'svelte';
 	import { SUPABASE_URL } from '$lib/config';
+	const isProd = import.meta.env.PROD;
 	let loading = false;
 	let error = '';
 	const ALLOWED_EMAIL = 'rayssankn@gmail.com';
@@ -18,15 +18,18 @@
 	}
 
 	// Always redirect to /blog after login
-	const redirectUrl =
-		(import.meta.env.PROD ? 'https://saix-topaz.vercel.app' : SUPABASE_URL) + '/blog';
+	const redirectUrl = isProd
+		? undefined // production pakai default redirect dari Supabase dashboard
+		: 'http://localhost:5173/blog'; // sesuaikan dengan dev lokalmu
 
 	async function signInWithGitHub() {
 		loading = true;
 		error = '';
 		const { error: signInError } = await supabase.auth.signInWithOAuth({
 			provider: 'github',
-			options: { redirectTo: redirectUrl }
+			options: {
+				redirectTo: redirectUrl
+			}
 		});
 		if (signInError) {
 			error = signInError.message;
