@@ -18,9 +18,7 @@
 	}
 
 	// Always redirect to /blog after login
-	const redirectUrl = isProd
-		? undefined // production pakai default redirect dari Supabase dashboard
-		: 'http://localhost:5173/blog'; // sesuaikan dengan dev lokalmu
+	const redirectUrl = isProd ? 'https://saix-topaz.vercel.app/blog' : 'http://localhost:5173/blog';
 
 	async function signInWithGitHub() {
 		loading = true;
