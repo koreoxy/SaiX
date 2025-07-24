@@ -9,6 +9,15 @@
 	import TechList from '$lib/components/TechList.svelte';
 	import GoUpButton from '$lib/components/GoUpButton.svelte';
 	import * as config from '$lib/config';
+
+	import { onMount } from 'svelte';
+	let showScene = false;
+
+	onMount(() => {
+		setTimeout(() => {
+			showScene = true;
+		}, 200);
+	});
 </script>
 
 <svelte:head>
@@ -27,12 +36,14 @@
 		</div>
 	</Bounded>
 
-	<div
-		class="-z-10 h-0 w-full flex-shrink-0 pl-[120px] sm:block sm:h-64 sm:pl-0 md:z-0 md:h-auto md:w-1/3 lg:w-1/2"
-	>
-		<div class="mt-10 md:sticky md:top-0 md:mt-0 md:h-screen">
-			<Scene />
+	{#if showScene}
+		<div
+			class="-z-10 h-0 w-full flex-shrink-0 pl-[120px] sm:block sm:h-64 sm:pl-0 md:z-0 md:h-auto md:w-1/3 lg:w-1/2"
+		>
+			<div class="mt-10 md:sticky md:top-0 md:mt-0 md:h-screen">
+				<Scene />
+			</div>
 		</div>
-	</div>
+	{/if}
 	<GoUpButton />
 </section>
